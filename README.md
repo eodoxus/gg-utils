@@ -3,14 +3,13 @@ A collection of handy little utilities that I personally use frequently. Stuff l
 
 >*Note*: I prefer `yarn` to `npm`, so will use it in this documenation
 
-## Installation
+## Developing Locally
 ```
-yarn global add lerna
 git clone https://github.com/eodoxus/gg-utils
-lerna install
-cd restclient
+yarn install
 yarn link
 ```
+Then, go to the repo that you want to consume gg-utils from, and run `yarn link gg-utils`
 
 ## Modules
 | Package | Purpose |
@@ -35,9 +34,7 @@ A super simple REST client that uses fetch for http requests. Has common REST me
 **Example**
 
 ``` javascript
-import {
-    RestClient
-} from "restclient";
+import { RestClient } from "gg-utils";
 const client = new RestClient();
 let data = await client.get( `${this.$url}/${this.id}` );
 console.log(data);
@@ -58,9 +55,7 @@ Additionally, there is a handy `ApiObject` class that follows something like the
 **Example**
 
 ``` javascript
-import {
-    ApiObject
-} from "restclient"
+import { ApiObject } from "gg-utils"
 ApiObject.setBasUrl("http://myapi.com");
 const person = new ApiObject("people");
 person.name = "Jason";
