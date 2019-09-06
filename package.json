@@ -1,0 +1,32 @@
+{
+  "name": "gg-utils",
+  "version": "1.0.0",
+  "description": "A set of utilitiess containing useful functionality like file system helpers, REST API client etc.",
+  "repository": "https://github.com/eodoxus/gg-utils",
+  "author": "Jason Gordon",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "NODE_ENV=development babel src -d dist",
+    "test": "jest"
+  },
+  "dependencies": {
+    "whatwg-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "babel-preset-react-app": "^9.0.1",
+    "jest": "^24.9.0",
+    "jest-fetch-mock": "^2.1.2"
+  },
+  "jest": {
+    "automock": false,
+    "coverageDirectory": "coverage",
+    "setupFiles": [
+      "<rootDir>/config/jest.setup.js"
+    ],
+    "testPathIgnorePatterns": ["dist/*"]
+  }
+}

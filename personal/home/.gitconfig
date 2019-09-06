@@ -1,0 +1,19 @@
+[user]
+    name = Jason Gordon
+    email = jason.m.gordon@gmail.com
+[alias]
+  st = status
+  di = diff
+  co = checkout
+  ci = commit
+  br = branch
+  sta = stash
+[color]
+    diff    = auto
+    status  = auto
+    branch  = auto
+[push]
+    default = tracking
+[core]
+	editor = vim
+
