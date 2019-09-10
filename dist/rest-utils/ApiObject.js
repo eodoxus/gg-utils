@@ -35,6 +35,12 @@ var ApiObject =
 function () {
   _createClass(ApiObject, null, [{
     key: "setBaseUrl",
+
+    /**
+     * Some web servers are configured to support only GET and POST methods.
+     * When doing a save, if we're doing an update, then by default we use PUT.
+     * If PUT isn't supported though, set this flag to false to fall back to POST.
+     */
     value: function setBaseUrl(url) {
       ApiObject.baseUrl = url;
     }
@@ -157,7 +163,7 @@ function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                method = this.id ? "put" : "post";
+                method = this.id && ApiObject.supportsPut ? "put" : "post";
                 _context3.next = 3;
                 return client[method](this.$url, this.toJson());
 
@@ -215,5 +221,6 @@ function () {
   return ApiObject;
 }();
 
+ApiObject.supportsPut = true;
 export { ApiObject as default };
 ApiObject.client = client;

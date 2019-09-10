@@ -8,9 +8,9 @@
   "private": true,
   "main": "dist/index.js",
   "scripts": {
-    "build": "NODE_ENV=production babel src -d dist",
+    "build": "NODE_ENV=production babel src -d dist --ignore 'src/**/*.test.js'",
     "test": "jest",
-    "watch": "NODE_ENV=development babel src -d dist --ignore 'src/**/*.test.js' -w -s"
+    "watch": "NODE_ENV=development babel src -w src -d dist --ignore 'src/**/*.test.js' -s"
   },
   "dependencies": {
     "whatwg-fetch": "^3.0.0"

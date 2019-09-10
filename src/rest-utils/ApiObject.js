@@ -29,6 +29,13 @@ const client = new RestClient();
 
 export default class ApiObject {
 
+  /**
+   * Some web servers are configured to support only GET and POST methods.
+   * When doing a save, if we're doing an update, then by default we use PUT.
+   * If PUT isn't supported though, set this flag to false to fall back to POST.
+   */
+  static supportsPut = true;
+
   static setBaseUrl(url) {
     ApiObject.baseUrl = url;
   }
@@ -76,7 +83,7 @@ export default class ApiObject {
   }
 
   async save() {
-    let method = this.id ? "put" : "post";
+    let method = this.id && ApiObject.supportsPut ? "put" : "post";
     let data = await client[method](this.$url, this.toJson());
     this.absorbData(data);
     this.$isLoaded = true;

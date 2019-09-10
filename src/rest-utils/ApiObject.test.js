@@ -116,6 +116,17 @@ describe("Class: ApiObject", () => {
       });
     });
 
+    it("should make a POST http request if object has a primary key set already, but PUT isn't supported", () => {
+      ApiObject.supportsPut = false;
+      const myObj = new ApiObject({ id: 1 });
+      return myObj.save().then(out => {
+        expect(out).toEqual(myObj);
+        expect(myObj.data).toBe(MOCK_RESPONSE.data);
+        expect(RestClient.prototype.post.mock.calls.length).toBe(1);
+        expect(myObj.$isLoaded).toBe(true);
+      });
+    });
+
     it("should make a POST http request if object does not have a primary key set already, and be chainable", () => {
       const myObj = new ApiObject();
       return myObj.save().then(out => {
