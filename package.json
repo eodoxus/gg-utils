@@ -1,6 +1,6 @@
 {
   "name": "gg-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A set of utilitiess containing useful functionality like file system helpers, REST API client etc.",
   "repository": "https://github.com/eodoxus/gg-utils",
   "author": "Jason Gordon",
